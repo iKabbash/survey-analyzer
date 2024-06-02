@@ -1,0 +1,16 @@
+version: '3.10'
+
+services:
+  survey-analyzer-be:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+
+  survey-analyzer-fe:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"

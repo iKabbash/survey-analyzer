@@ -58,9 +58,10 @@ CORS(app)
 @app.route('/analyze', methods=['POST'])
 def post_example():
     file = request.files['file']
-    # Do something with the file, such as saving it to disk
+    # Save file to disk
     file.save('surveys/sample.pdf')
     return get_feedback_sentiment()
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    from waitress import serve
+    serve(app, host="0.0.0.0", port=5000)

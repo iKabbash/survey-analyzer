@@ -1,0 +1,6 @@
+Flask
+Flask-Cors
+azure-ai-formrecognizer
+azure-ai-textanalytics==5.2.0
+python-dotenv
+waitress
