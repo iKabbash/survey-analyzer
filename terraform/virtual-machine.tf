@@ -48,19 +48,6 @@ resource "azurerm_linux_virtual_machine" "survey_analyzer_vm" {
     sku       = "22_04-lts"
     version   = "latest"
   }
-  # Copy app files
-  # provisioner "file" {
-  #   connection {
-  #     type = "ssh"
-  #     user = "ubuntu"
-  #     host = azurerm_public_ip.analyzer_vm_public_ip.ip_address
-  #     private_key = file("~/.ssh/vKey-RSA")
-  #     agent    = false
-  #     timeout  = "10m"
-  #   }
-  #   source = "../"
-  #   destination = "/home/ubuntu/"
-  # }
   tags = {
     environment = "survey_analyzer"
   }
