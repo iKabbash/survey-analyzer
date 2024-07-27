@@ -8,6 +8,7 @@ Technologies used: React, Flask, Docker, Terraform, and Azure
         - [Local](#local)
         - [Azure VM](#azure-vm)
         - [Document Intelligence Model Training](#document-intelligence-model-training)
+        - [Testing](#testing)
 - [Wrap Up](#wrap-up)
 
 ![Demo App Architecture](images/architecture.png)
@@ -66,6 +67,11 @@ The default setup deploys the application to an Azure virtual machine with an Ng
     - Note: you can name the model anything else you like, just be sure to change `MODEL_ID` accordingly in the backend's `.env` file
 
     ![Model](images/step-5.png)
+
+### Testing
+After the app has been successfully deployed, you can use the survey forms in the terraform directory or create your own by using [this](https://www.canva.com/design/DAGGz2NOQQM/UUFC14RL2JPjUSaPJjuw3A/view?utm_content=DAGGz2NOQQM&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink&mode=preview) template (Canva account will be needed to edit)
+Upload the custom survey file then click on analyze and you're done
+    ![Demo App](images/demo-screenshot.png)
 
 # Wrap Up
 Be sure to not forget to destroy your Terraform resources after you're done. If you have any feedback or any issue don't hesitate to let me know!
