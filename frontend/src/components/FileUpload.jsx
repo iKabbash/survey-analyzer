@@ -14,9 +14,21 @@ const FileUpload = () => {
         setFile(event.target.files[0]);
     }
 
+    // const getBaseUrl = () => {
+    //     let url;
+    //     switch (process.env.NODE_ENV) {
+    //         case 'production':
+    //             url = import.meta.env.VITE_API_URL;
+    //             break;
+    //         case 'development':
+    //         default:
+    //             url = 'http://localhost:5000/analyze';
+    //         }
+    //     return url;
+    // }
+
     function handleSubmit(event) {
         event.preventDefault();
-        const url = 'http://localhost:5000/analyze';
         const formData = new FormData();
         formData.append('file', file);
         formData.append('fileName', file.name);
@@ -25,7 +37,7 @@ const FileUpload = () => {
                 'content-type': 'multipart/form-data',
             },
         };
-        axios.post(url, formData, config)
+        axios.post(import.meta.env.VITE_API_URL, formData, config)
             .then((response) => {
                 console.log(response.data);
                 setResponse(response.data);
@@ -41,7 +53,7 @@ const FileUpload = () => {
     return (
         <div className="mt-10">
             <form onSubmit={handleSubmit}>
-                <h1 className='md:text-2xl sm:text-xl text-xl font-bold py-2 text-text2'>Upload survey response document</h1>
+                <h1 className='py-2 text-xl font-bold md:text-2xl sm:text-xl text-text2'>Upload survey response document</h1>
                 <div className='mt-3'>
                     <input onChange={handleChange} type="file" className="text-sm text-stone-500 file:mr-5 file:py-1 file:px-3 file:border-[1px]
                     file:font-medium file:bg-stone-50 file:text-stone-700 hover:file:cursor-pointe
@@ -51,12 +63,12 @@ const FileUpload = () => {
 
                     <textarea readOnly id="message" rows="4" className="block p-2.5 w-full h-40 mt-2 text-sm text-gray-900 bg-gray-50
                     rounded-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400
-                    dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="JSON output goes here..." value={JSON.stringify(response)}></textarea>
+                    dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="JSON output goes here..." value={JSON.stringify(response, null, 4)}></textarea>
                 </div>
             </form>
             {uploadedFile && <img src={uploadedFile} alt="Uploaded content" />}
             {error && <p>Error uploading file: {error.message}</p>}
-            { isParagraphVisible && (<p className='mt-2'>Feedback rate: {JSON.stringify(response.Sentiment.Result)}</p>) }
+            {isParagraphVisible && (<p className='mt-2'>Feedback rate: {JSON.stringify(response.Sentiment.Result)}</p>)}
         </div>
     );
 };
