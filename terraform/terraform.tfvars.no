@@ -1,0 +1,4 @@
+application_usage = "cloud"
+# public_key_path   = "~/.ssh/id_rsa.pub"
+public_key_path   = "~/.ssh/vKey-RSA.pub"
+vm_size           = "Standard_B2s"
