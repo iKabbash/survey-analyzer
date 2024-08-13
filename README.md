@@ -27,7 +27,7 @@ The default setup deploys the application to an Azure virtual machine with an Ng
 ### Local
 - Rename `virtual-machine.tf` to `virtual-machine.tf.disable`
 - Comment `vm_dns_name` and `vm_public_ip` code blocks in the `outputs.tf` terraform file
-- Deploy the infrastructure `terraform apply`
+- Deploy the infrastructure `terraform init && terraform apply`
 - Follow the Document Intelligence Model Training [steps](#document-intelligence-model-training) below
     - If you named the model something else than survey-model, be sure to change `DOCUMENT_INTELLIGENCE_MODEL_ID` accordingly in the `env-files-setup.sh` script
 - Update the `.env` files using `modify-env-vars.sh` script which takes Terraform outputs and adds them in the `.env` file of both Frontend and Backend
@@ -35,7 +35,7 @@ The default setup deploys the application to an Azure virtual machine with an Ng
 - Go to http://localhost:3000 and upload a survey
 
 ### Azure VM
-- Deploy the infrastructure `terraform apply -var public_key_path=~/.ssh/key-name.pub`
+- Deploy the infrastructure `terraform init && terraform apply -var public_key_path=~/.ssh/key-name.pub`
 - Follow the Document Intelligence Model Training [steps](#document-intelligence-model-training) below
 - Update the `.env` files using `modify-env-vars.sh` script which takes Terraform outputs and adds them in the `.env` file of both Frontend and Backend
 - In the repo directory, copy the `docker-compose.yml` file and `backend` and `frontend` directories to the server
