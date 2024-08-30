@@ -18,7 +18,7 @@ def extract_document_feedback():
     # Connect to the document intelligence service
     document_analysis_client = DocumentAnalysisClient(endpoint=FORM_RECOGNIZER_ENDPOINT, credential=AzureKeyCredential(FORM_RECOGNIZER_KEY))
     # Path to your local document
-    document_path = "surveys/sample.pdf"
+    document_path = "./sample.pdf"
     # Open and read the document
     with open(document_path, "rb") as document:
         # Document analysis
@@ -59,7 +59,7 @@ CORS(app)
 def post_example():
     file = request.files['file']
     # Save file to disk
-    file.save('surveys/sample.pdf')
+    file.save('./sample.pdf')
     return get_feedback_sentiment()
 
 if __name__ == "__main__":
